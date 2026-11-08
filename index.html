@@ -131,6 +131,29 @@
   @media(prefers-color-scheme:dark){.steps li b{color:#0D130E}}
   .modal .claim{width:100%;display:block}
   .fine{font-size:13px;color:var(--muted);margin-top:12px}
+  /* Info sections (plain text, readable without JS) */
+  .info{margin:26px 0 8px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 26px}
+  .info h2{font-size:23px;margin:0 0 10px;font-weight:900}
+  .info h3{font-size:17px;margin:18px 0 4px;font-weight:800}
+  .info p{color:var(--ink);margin:0 0 10px;line-height:1.6;font-size:15.5px}
+  .info ul{margin:6px 0 10px;padding-left:22px;line-height:1.6;font-size:15.5px}
+  .info li{margin-bottom:6px}
+  .sec-kicker{font-weight:900;font-size:19px;margin:0 0 12px}
+  .checkline{display:flex;flex-wrap:wrap;gap:6px 18px;background:var(--chip);border:1px solid var(--line);border-radius:14px;padding:12px 16px;font-size:14.5px;font-weight:700;margin:18px 0 0}
+  .checkline span+span:before{content:"·";margin-right:18px;color:var(--muted)}
+  .trial-line{margin-top:8px;background:#FFF7E6;border:1px solid #F5D9A0;color:#5C3D00;border-radius:12px;padding:9px 11px;font-size:13.5px;line-height:1.45;font-weight:600}
+  @media(prefers-color-scheme:dark){.trial-line{background:#2A230F;border-color:#5C4A1E;color:#FFD98A}}
+  .cat-list{display:grid;gap:16px;margin-top:6px}
+  @media(min-width:700px){.cat-list{grid-template-columns:1fr 1fr}}
+  .cat-item h2{margin:0 0 3px}
+  .cat-item p{margin:0;color:var(--muted);font-size:14.5px}
+  .morelike{margin-top:16px;border-top:1px solid var(--line);padding-top:14px}
+  .morelike h4{margin:0 0 8px;font-size:15px;font-weight:800}
+  .morelike a{display:inline-block;margin:0 8px 8px 0;background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:8px 13px;font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;cursor:pointer}
+  .all-list{columns:2;column-gap:28px;margin:10px 0 0;padding-left:20px;font-size:14.5px;line-height:1.55}
+  @media(max-width:700px){.all-list{columns:1}}
+  .all-list li{margin-bottom:7px;break-inside:avoid}
+  details.info summary{cursor:pointer;font-weight:900;font-size:19px}
   @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -147,6 +170,14 @@
 
   <h1>Everything free.<br>For <em>everyone</em>, everywhere.</h1>
   <p class="lead">Free plans, free trials and real discounts from the world's best-known apps and services — open to everyone, in most countries. No student ID, no special email. Just pick an offer and claim it on the official site.</p>
+
+  <section class="info" aria-label="About this page">
+    <h2>What is a free stuff website?</h2>
+    <p>A free stuff website is one page that collects real free offers from real brands, so you do not have to hunt for them one by one. This page lists 59 offers, all taken from the brands' own official sites. There are three kinds here. Free trials let you try a paid app free for 7 to 30 days — for example Word, YouTube Premium or Apple TV+. Free-forever plans cost nothing at all, for as long as you use them. And discounts cut the price of software, games, courses and hosting, sometimes by 70 to 90 percent. Everything here is for everyone. You do not need a student ID, a special email or an invitation — if the offer says “Global”, anyone in most countries can claim it. Some offers ask for a card to start a trial; those are marked “Card needed”, and every trial card on this page tells you how long the trial lasts and what it costs after, so you can cancel before you are charged. Claiming an offer is simple: open it, tap the button, and sign up on the brand's own official website. Prices and trial lengths can change, and they can differ by country, so always check the official site before you pay.</p>
+    <p><strong>Global digital offers only — no US-only mailed samples.</strong> Every offer here is something you can use online: an app, a piece of software, a streaming service, a course or a game. You will not find mailed samples, food coupons or furniture giveaways here — those only work in one country, and this list is for everyone, everywhere.</p>
+    <p>Who checks these offers: every offer is checked against the brand's own official site only, and the whole list is reviewed every week.</p>
+  </section>
+  <p class="checkline"><span>Checked 8 Nov 2026: 59 offers listed.</span><span>Removed this week: none yet — list started 8 Nov 2026.</span></p>
 
   <div class="featured" aria-label="Featured offer">
     <div>
@@ -203,6 +234,112 @@
     <button class="btn btn-amber" id="resetFilters" style="background:var(--green);color:#fff">Show all offers</button>
   </div>
 
+  <section class="info" aria-label="Categories">
+    <p class="sec-kicker">Browse by category</p>
+    <div class="cat-list">
+    <div class="cat-item"><h2>AI Tools (6 offers)</h2><p>Free AI chat, writing, image and voice tools you can start using right away — most need no card.</p></div>
+    <div class="cat-item"><h2>Design & Creative (7 offers)</h2><p>Free design tools, fonts, icons and stock photos for your next project.</p></div>
+    <div class="cat-item"><h2>Software (7 offers)</h2><p>Office apps, VPNs and everyday tools — free plans and free trials.</p></div>
+    <div class="cat-item"><h2>Streaming & Music (6 offers)</h2><p>Free trials and free tiers for music and video streaming.</p></div>
+    <div class="cat-item"><h2>Education (7 offers)</h2><p>Free courses and learning — coding, languages, design and creative skills.</p></div>
+    <div class="cat-item"><h2>Gaming (5 offers)</h2><p>A free PC game every week, plus big seasonal sale discounts.</p></div>
+    <div class="cat-item"><h2>Cloud & Dev (11 offers)</h2><p>Free cloud servers, hosting deals and tools for developers and website owners.</p></div>
+    <div class="cat-item"><h2>Finance (5 offers)</h2><p>Free trading charts, accounting trials and money tools.</p></div>
+    <div class="cat-item"><h2>Shopping (5 offers)</h2><p>Free delivery and streaming trials, plus discounts on shopping and domains.</p></div>
+    </div>
+  </section>
+
+  <details class="info" aria-label="All offers as a plain list">
+    <summary>All 59 offers — plain list (no search needed)</summary>
+    <p>Every offer on this page, as plain text. Use the search box above to filter, or read the full list here.</p>
+    <ul class="all-list">
+      <li><strong>ChatGPT</strong> — Free plan — no card needed · AI Tools · Global · No card needed</li>
+      <li><strong>Google Gemini</strong> — Free with any Google account · AI Tools · Global · No card needed</li>
+      <li><strong>Claude</strong> — Free plan included · AI Tools · Most countries · No card needed</li>
+      <li><strong>Perplexity AI</strong> — Free AI search forever · AI Tools · Global · No card needed</li>
+      <li><strong>Microsoft Copilot</strong> — Free — built into Windows &amp; Edge · AI Tools · Global · No card needed</li>
+      <li><strong>Leonardo AI</strong> — Free image credits every day · AI Tools · Global · No card needed</li>
+      <li><strong>Canva</strong> — Free forever — 250,000+ templates · Design &amp; Creative · Global · No card needed</li>
+      <li><strong>Figma</strong> — Free Starter plan · Design &amp; Creative · Global · No card needed</li>
+      <li><strong>Adobe Express</strong> — Free plan by Adobe · Design &amp; Creative · Global · No card needed</li>
+      <li><strong>CapCut</strong> — Free video editor — phone &amp; PC · Design &amp; Creative · Global · No card needed</li>
+      <li><strong>Photopea</strong> — Free Photoshop-style editor in browser · Design &amp; Creative · Global · No card needed</li>
+      <li><strong>Framer</strong> — Publish 1 website free · Design &amp; Creative · Global · No card needed</li>
+      <li><strong>Notion</strong> — Free for personal use · Software · Global · No card needed</li>
+      <li><strong>Google Docs, Sheets &amp; Slides</strong> — Free with Google account · Software · Global · No card needed</li>
+      <li><strong>Trello</strong> — Free plan — unlimited cards · Software · Global · No card needed</li>
+      <li><strong>Zoom</strong> — Free 40-minute meetings · Software · Global · No card needed</li>
+      <li><strong>Slack</strong> — Free plan for teams · Software · Global · No card needed</li>
+      <li><strong>GitHub</strong> — Free — unlimited public repos · Cloud &amp; Dev · Global · No card needed</li>
+      <li><strong>VS Code</strong> — 100% free, forever · Cloud &amp; Dev · Global · No card needed</li>
+      <li><strong>Vercel</strong> — Free Hobby hosting · Cloud &amp; Dev · Global · No card needed</li>
+      <li><strong>Netlify</strong> — Free website hosting · Cloud &amp; Dev · Global · No card needed</li>
+      <li><strong>Replit</strong> — Code free in your browser · Cloud &amp; Dev · Global · No card needed</li>
+      <li><strong>Spotify</strong> — Free music with ads · Streaming &amp; Music · Most countries · No card needed</li>
+      <li><strong>YouTube</strong> — Free — plus free movies with ads · Streaming &amp; Music · Global · No card needed</li>
+      <li><strong>SoundCloud</strong> — Free listening + free uploads · Streaming &amp; Music · Global · No card needed</li>
+      <li><strong>Twitch</strong> — Free streams &amp; Drops rewards · Streaming &amp; Music · Global · No card needed</li>
+      <li><strong>Google Drive</strong> — 15 GB free storage · Cloud &amp; Dev · Global · No card needed</li>
+      <li><strong>pCloud</strong> — 10 GB free storage · Cloud &amp; Dev · Global · No card needed</li>
+      <li><strong>Dropbox</strong> — 2 GB free — earn more free · Cloud &amp; Dev · Global · No card needed</li>
+      <li><strong>Oracle Cloud Free Tier</strong> — Always Free cloud servers · Cloud &amp; Dev · Most countries · Card needed</li>
+      <li><strong>Duolingo</strong> — Learn languages free · Education · Global · No card needed</li>
+      <li><strong>Khan Academy</strong> — 100% free — no ads, no paywall · Education · Global · No card needed</li>
+      <li><strong>Coursera</strong> — Audit top-university courses free · Education · Global · No card needed</li>
+      <li><strong>freeCodeCamp</strong> — Free coding certifications · Education · Global · No card needed</li>
+      <li><strong>Epic Games Store</strong> — 1–2 free PC games every week · Gaming · Global · No card needed</li>
+      <li><strong>Steam Free-to-Play</strong> — 100s of free games — CS2, Dota 2, Apex · Gaming · Global · No card needed</li>
+      <li><strong>Google Opinion Rewards</strong> — Earn free Play Store credit · Shopping · Many countries · No card needed</li>
+      <li><strong>Microsoft Rewards</strong> — Free gift cards for searching · Shopping · Many countries · No card needed</li>
+      <li><strong>Microsoft 365</strong> — 1-month free trial · Software · Global · Card needed</li>
+      <li><strong>Amazon Prime</strong> — 30-day free trial · Shopping · Many countries · Card needed</li>
+      <li><strong>YouTube Premium</strong> — Free trial — ad-free YouTube · Streaming &amp; Music · Most countries · Card needed</li>
+      <li><strong>Apple TV+</strong> — 7-day free trial · 3 months with a new Apple device · Streaming &amp; Music · Most countries · Card needed</li>
+      <li><strong>Skillshare</strong> — 1-month free trial · Education · Global · Card needed</li>
+      <li><strong>Wise</strong> — Free multi-currency account · Finance · Many countries · No card needed</li>
+      <li><strong>Revolut</strong> — Free Standard plan · Finance · Many countries · No card needed</li>
+      <li><strong>TradingView</strong> — Free plan for charts &amp; ideas · Finance · Global · No card needed</li>
+      <li><strong>Honey (PayPal)</strong> — Free — finds coupons automatically · Shopping · Many countries · No card needed</li>
+      <li><strong>NordVPN</strong> — Save ~70% on 2-year plans · Software · Global · Card needed</li>
+      <li><strong>Hostinger Hosting</strong> — Up to 75% off web hosting · Cloud &amp; Dev · Global · Card needed</li>
+      <li><strong>Adobe Creative Cloud</strong> — Up to 40% off first year (seasonal promos) · Design &amp; Creative · Most countries · Card needed</li>
+      <li><strong>Udemy Course Sales</strong> — Up to 85% off courses in weekly sales · Education · Global · Card needed</li>
+      <li><strong>MasterClass</strong> — Frequent 50% off annual plan · Education · Most countries · Card needed</li>
+      <li><strong>Steam Seasonal Sales</strong> — Up to 90% off in seasonal sales · Gaming · Global · Card needed</li>
+      <li><strong>Humble Bundle</strong> — Bundles save up to ~90% · Gaming · Global · Card needed</li>
+      <li><strong>Xbox Game Pass Ultimate</strong> — Intro-month deal for new members · Gaming · Many countries · Card needed</li>
+      <li><strong>TradingView Annual Sale</strong> — Up to 60% off paid plans in big sales · Finance · Global · Card needed</li>
+      <li><strong>QuickBooks Online</strong> — 50% off first 3 months (new customers) · Finance · Many countries · Card needed</li>
+      <li><strong>Rakuten Cash Back</strong> — Free cashback + new-member bonus · Shopping · US &amp; select countries · No card needed</li>
+      <li><strong>Namecheap Domains</strong> — Up to ~90% off select domains (1st year) · Cloud &amp; Dev · Global · Card needed</li>
+    </ul>
+  </details>
+
+  <section class="info" aria-label="How to spot a fake free offer">
+    <h2>How to spot a fake free offer</h2>
+    <p>Most "free" traps follow the same pattern. Check these four things before you sign up for anything:</p>
+    <ul>
+      <li><strong>Check the official site first.</strong> A real free offer lives on the brand's own website. If a link, ad or message sends you somewhere else, stop.</li>
+      <li><strong>Never give a card number or ID number for a "free" sample.</strong> A real free sample never asks for your card number, bank details or an ID number like an SSN. If it asks, it is not free — it is a trap.</li>
+      <li><strong>If it sounds impossible, it is.</strong> A free phone for $1, or a $500 gift card for one click, is never real.</li>
+      <li><strong>Read the trial end date before you sign up.</strong> Note the date, set a reminder a few days before, and cancel from the brand's own site or app if you do not want to pay.</li>
+    </ul>
+  </section>
+
+  <section class="info" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <h3>Are these really free?</h3>
+    <p>Yes — every offer on this page comes from the brand's own official site. "Free forever" offers cost nothing at all. Free trials cost nothing during the trial, but they turn into a paid plan if you do not cancel — and every trial card shows the price after the trial, so you know before you start.</p>
+    <h3>Do I need a card?</h3>
+    <p>Some offers, yes. 17 of the 59 offers ask for a card — mostly free trials and discounted plans. They are marked "Card needed". The other 42 need no card at all and are marked "No card needed".</p>
+    <h3>What happens if I forget to cancel?</h3>
+    <p>The trial turns into a paid subscription and your card is charged. Set a reminder on the day you sign up, a few days before the trial ends, and cancel from the brand's own site or app.</p>
+    <h3>Do offers work worldwide?</h3>
+    <p>These are global digital offers — apps, software, streaming, courses and games you use online. A few offers vary by country: the trial length or the price can differ, and a small number may not be available everywhere. The official site shows what applies in your country.</p>
+    <h3>How do you check offers?</h3>
+    <p>Every offer is checked against the brand's own official site — not a blog or a coupon site — and the whole list is reviewed every week. Offers that no longer work are removed, and the check date is shown at the top of this page.</p>
+  </section>
+
 </main>
 
 <footer>
@@ -226,6 +363,7 @@
     <ol class="steps" id="modalSteps"></ol>
     <a class="claim" id="modalClaim" href="#" target="_blank" rel="noopener">Get this free on the official site →</a>
     <p class="fine" id="modalFine"></p>
+    <div class="morelike" id="modalMore" style="display:none"></div>
   </div>
 </div>
 
@@ -330,6 +468,14 @@ function heartSVG(active){
   return '<svg viewBox="0 0 24 24" fill="'+(active?'currentColor':'none')+'" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>';
 }
 
+var TRIAL_AFTER = {
+  "ms365": "1 month free, then $9.99/mo (US price, or $99.99/yr) — cancel before it ends or you are charged.",
+  "prime": "30 days free, then $14.99/mo (US price, or $139/yr) — cancel before it ends or you are charged.",
+  "ytpremium": "1 month free, then $15.99/mo (US price) — cancel before it ends or you are charged.",
+  "appletv": "7 days free, then $14.99/mo (US price) — cancel before it ends or you are charged.",
+  "skillshare": "1 month free, then about $13.99/mo billed annually ($167.88/yr, US price) — cancel before it ends or you are charged."
+};
+
 function renderGrid(){
   var list = filtered();
   var grid = document.getElementById("grid");
@@ -345,7 +491,8 @@ function renderGrid(){
       + '<div class="offer-text'+(kindOf(o)==="discount"?' deal':'')+'">'+o.offer+'</div>'
       + '<p class="desc">'+o.desc+'</p>'
       + (o.was ? '<div class="price-line"><s>'+o.was+'</s><br>'+o.now+'</div>' : '')
-      + '<div class="meta"><span>'+o.region+'</span><span>'+(kindOf(o)==="discount" ? (o.card?'Card needed':'Money-back deal') : (o.card?'Card to verify only':'No card needed'))+'</span></div>'
+      + (o.type==="Free trial" && TRIAL_AFTER[o.id] ? '<div class="trial-line">\u23f1 '+TRIAL_AFTER[o.id]+' Prices differ by country — check the official site.</div>' : '')
+      + '<div class="meta"><span>'+o.region+'</span><span>'+(o.card?'Card needed':'No card needed')+'</span></div>'
       + '<div class="card-foot"><a class="claim" href="'+o.url+'" target="_blank" rel="noopener">'+(kindOf(o)==="discount" ? "Get discount \u2192" : (o.type==="Free trial" ? "Start free trial \u2192" : "Get free \u2192"))+'</a><button class="details-btn" data-open-offer="'+o.id+'">Details</button></div>'
       + '</article>';
   }).join("");
@@ -378,13 +525,23 @@ function openModal(id){
     "Check the final price and the terms before paying: many % off deals are for new customers or long plans, and renewals usually go back to the regular price."
   ] : [
     "Tap the button below — it opens the official website of " + o.name + ".",
-    o.card ? (o.type==="Free trial" ? "Start the trial with your account and card — you are not charged during the trial period." : "Create a free account. A card may be asked only to verify you are a real person — the free tier itself does not charge.") : "Create a free account with your email. No card is needed for the free offer.",
+    o.card ? "A card is needed to start. You are not charged during the free period, but you must add a card. Cancel before it ends or you will be charged." : "Create a free account with your email. No card is needed for the free offer.",
     o.type==="Free weekly" ? "Claim the free item before the weekly deadline — once claimed, it is yours forever." : (o.type==="Free trial" ? "Note the trial end date and set a reminder. Cancel before it ends if you don't want the paid plan." : "Choose the free plan at sign-up (skip any paid upgrade screen) and start using it.")
   ];
   document.getElementById("modalSteps").innerHTML = steps.map(function(s,idx){ return "<li><b>"+(idx+1)+"</b><span>"+s+"</span></li>"; }).join("");
   var claim = document.getElementById("modalClaim");
   claim.href = o.url; claim.textContent = isDeal ? ("Go to " + o.name + " — see the discount →") : ("Go to " + o.name + " — get it free →");
   document.getElementById("modalFine").textContent = "You are leaving this page for the official " + o.name + " website. Offer details there are final and can change over time.";
+  var related = OFFERS.filter(function(x){ return x.cat===o.cat && x.id!==o.id; }).slice(0,3);
+  var ml = document.getElementById("modalMore");
+  if(ml){
+    if(related.length){
+      ml.style.display = "block";
+      ml.innerHTML = '<h4>More like this</h4>' + related.map(function(r){ return '<a data-more-offer="'+r.id+'">'+r.name+'</a>'; }).join("");
+      var links = ml.querySelectorAll("[data-more-offer]");
+      for(var mi=0; mi<links.length; mi++){ links[mi].addEventListener("click", function(){ openModal(this.getAttribute("data-more-offer")); }); }
+    } else { ml.style.display = "none"; ml.innerHTML = ""; }
+  }
   document.getElementById("modalBackdrop").classList.add("open");
   document.getElementById("modalClose").focus();
 }
