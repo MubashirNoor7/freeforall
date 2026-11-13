@@ -4,12 +4,12 @@
   "description": "59 free offers, free trials and discounts from official sites \u2014 for everyone, worldwide.",
   "icons": [
     {
-      "src": "favicon-192.png",
+      "src": "/assets/favicon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "favicon-512.png",
+      "src": "/assets/favicon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
