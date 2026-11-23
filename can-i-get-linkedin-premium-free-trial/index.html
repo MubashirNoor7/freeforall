@@ -421,6 +421,38 @@
   ]
 }
 </script>
+<style>
+/* FreeForAll feedback: floating button + form. Sends by email, nothing is stored. */
+.ffa-fab{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--green);color:#fff;border:none;border-radius:999px;padding:12px 20px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:var(--shadow)}
+.ffa-fab:hover{background:var(--green-dark)}
+.ffa-backdrop{position:fixed;inset:0;background:rgba(10,14,10,.55);backdrop-filter:blur(4px);display:none;place-items:end center;z-index:70;padding:16px}
+@media(min-width:700px){.ffa-backdrop{place-items:center}}
+.ffa-backdrop.open{display:grid}
+.ffa-modal{background:var(--card);color:var(--ink);width:min(560px,100%);border-radius:22px;padding:24px;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
+.ffa-modal h3{margin:0 0 4px;font-size:21px;line-height:1.2;font-weight:900}
+.ffa-modal .ffa-sub{margin:0 0 16px;color:var(--muted);font-size:14.5px;font-weight:600}
+.ffa-modal-head{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.ffa-close-x{border:1.5px solid var(--line);background:var(--card);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;flex:none}
+.ffa-kinds{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.ffa-kind input{position:absolute;opacity:0;width:1px;height:1px}
+.ffa-kind span{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;font-weight:800;font-size:13.5px;cursor:pointer}
+.ffa-kind input:checked + span{background:var(--green);border-color:var(--green);color:#fff}
+.ffa-kind input:focus-visible + span{outline:2px solid var(--green);outline-offset:2px}
+.ffa-field{margin:0 0 12px}
+.ffa-field label{display:block;font-weight:800;font-size:13.5px;margin:0 0 5px}
+.ffa-field input,.ffa-field textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--card);color:var(--ink);font-size:15px;box-sizing:border-box}
+.ffa-field textarea{min-height:110px;resize:vertical}
+.ffa-field input:focus,.ffa-field textarea:focus{outline:2px solid var(--green);outline-offset:1px;border-color:var(--green)}
+.ffa-error{display:none;color:#B3261E;font-weight:700;font-size:13.5px;margin:0 0 10px}
+.ffa-error.show{display:block}
+.ffa-send{width:100%;border:none;background:var(--green);color:#fff;border-radius:999px;padding:12px;font-weight:800;font-size:15.5px;cursor:pointer}
+.ffa-send:hover{background:var(--green-dark)}
+.ffa-composed{white-space:pre-wrap;word-break:break-word;background:var(--chip);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:14px;margin:0 0 12px}
+.ffa-copy{width:100%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:11px;font-weight:800;font-size:14.5px;cursor:pointer;margin:0 0 8px}
+.ffa-open-mail{display:block;text-align:center;font-weight:800;color:var(--green);padding:8px}
+.ffa-again{display:block;text-align:center;font-weight:700;color:var(--muted);padding:8px;cursor:pointer;background:none;border:none;width:100%;font-size:14px}
+.ffa-tell-us{background:none;border:none;padding:8px 0 0;color:var(--green);font-weight:800;font-size:14px;cursor:pointer;text-decoration:underline}
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -574,6 +606,7 @@
       <nav aria-label="Trust and about">
         <h4>Trust &amp; about</h4>
         <ul class="foot-links">
+          <li><a href="#" class="ffa-feedback-link">Give feedback</a></li>
           <li><a href="https://freeforall-offers.vercel.app/">How every offer is checked</a></li>
           <li><a href="https://freeforall-offers.vercel.app/">What is a free stuff website?</a></li>
         </ul>
@@ -592,5 +625,124 @@
     </div>
   </div>
 </footer>
+<button type="button" class="ffa-fab" id="ffaFab" aria-label="Give feedback">Feedback</button>
+<div class="ffa-backdrop" id="ffaBackdrop" role="dialog" aria-modal="true" aria-labelledby="ffaTitle">
+  <div class="ffa-modal">
+    <div class="ffa-modal-head">
+      <div>
+        <h3 id="ffaTitle">Give feedback</h3>
+        <p class="ffa-sub">Found a problem, or know a free offer we missed? Tell us here. It opens your email app, nothing is stored.</p>
+      </div>
+      <button type="button" class="ffa-close-x" id="ffaClose" aria-label="Close">✕</button>
+    </div>
+    <form id="ffaForm" novalidate>
+      <div class="ffa-kinds" role="radiogroup" aria-label="What is this about?">
+        <label class="ffa-kind"><input type="radio" name="ffa-kind" value="New offer idea" checked><span>New offer idea</span></label>
+        <label class="ffa-kind"><input type="radio" name="ffa-kind" value="Problem with an offer"><span>Problem with an offer</span></label>
+        <label class="ffa-kind"><input type="radio" name="ffa-kind" value="Something else"><span>Something else</span></label>
+      </div>
+      <div class="ffa-field">
+        <label for="ffaOffer">Which offer? (optional)</label>
+        <input type="text" id="ffaOffer" placeholder="e.g. Canva Pro free trial" autocomplete="off">
+      </div>
+      <div class="ffa-field">
+        <label for="ffaMessage">Your message</label>
+        <textarea id="ffaMessage" required></textarea>
+      </div>
+      <div class="ffa-field">
+        <label for="ffaName">Your name (optional)</label>
+        <input type="text" id="ffaName" autocomplete="name">
+      </div>
+      <div class="ffa-field">
+        <label for="ffaEmail">Your email (optional)</label>
+        <input type="email" id="ffaEmail" autocomplete="email">
+      </div>
+      <p class="ffa-error" id="ffaError">Please write your message first.</p>
+      <button type="submit" class="ffa-send">Send feedback</button>
+    </form>
+    <div id="ffaSent" hidden>
+      <p class="ffa-sub">Your email app should open with this message ready. If it did not open, copy the message below.</p>
+      <div class="ffa-composed" id="ffaComposed"></div>
+      <button type="button" class="ffa-copy" id="ffaCopy">Copy message</button>
+      <a class="ffa-open-mail" id="ffaOpenMail" href="#">Open your email app</a>
+      <button type="button" class="ffa-again" id="ffaAgain">Send another message</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var EMAIL = "sammykhanmalng@gmail.com";
+  var backdrop = document.getElementById("ffaBackdrop");
+  var form = document.getElementById("ffaForm");
+  var sent = document.getElementById("ffaSent");
+  var offerInput = document.getElementById("ffaOffer");
+  var messageInput = document.getElementById("ffaMessage");
+  var errorBox = document.getElementById("ffaError");
+  function kindValue(){
+    var radios = form.querySelectorAll('input[name="ffa-kind"]');
+    for(var i=0;i<radios.length;i++){ if(radios[i].checked) return radios[i].value; }
+    return "Something else";
+  }
+  function setKind(v){
+    var radios = form.querySelectorAll('input[name="ffa-kind"]');
+    for(var i=0;i<radios.length;i++){ radios[i].checked = (radios[i].value===v); }
+  }
+  function openFeedback(prefillOffer, presetKind){
+    if(prefillOffer){ offerInput.value = prefillOffer; }
+    if(presetKind){ setKind(presetKind); }
+    form.hidden = false; sent.hidden = true; errorBox.className = "ffa-error";
+    backdrop.classList.add("open");
+    messageInput.focus();
+  }
+  function closeFeedback(){ backdrop.classList.remove("open"); }
+  function buildMail(){
+    var kind = kindValue();
+    var offer = offerInput.value.trim();
+    var subject = "[FreeForAll feedback] " + kind + " - " + (offer || "Whole site");
+    var lines = ["Kind: " + kind, "Offer: " + (offer || "-"), "Page: " + location.href, "", "Message:", messageInput.value.trim(), "", "Name: " + (document.getElementById("ffaName").value.trim() || "-"), "Email: " + (document.getElementById("ffaEmail").value.trim() || "-")];
+    return { href: "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n")), text: "To: " + EMAIL + "\nSubject: " + subject + "\n\n" + lines.join("\n") };
+  }
+  document.getElementById("ffaFab").addEventListener("click", function(){ openFeedback("", ""); });
+  var links = document.querySelectorAll(".ffa-feedback-link");
+  for(var li=0; li<links.length; li++){ links[li].addEventListener("click", function(e){ e.preventDefault(); openFeedback("", ""); }); }
+  var tellUs = document.getElementById("ffaTellUs");
+  if(tellUs){ tellUs.addEventListener("click", function(){
+    var name = "";
+    var titleEl = document.getElementById("modalTitle");
+    if(titleEl){ name = titleEl.textContent.trim(); }
+    var offerModal = document.getElementById("modalBackdrop");
+    if(offerModal){ offerModal.classList.remove("open"); }
+    openFeedback(name, "Problem with an offer");
+  }); }
+  document.getElementById("ffaClose").addEventListener("click", closeFeedback);
+  backdrop.addEventListener("click", function(e){ if(e.target===backdrop) closeFeedback(); });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeFeedback(); });
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(!messageInput.value.trim()){ errorBox.className = "ffa-error show"; messageInput.focus(); return; }
+    var mail = buildMail();
+    document.getElementById("ffaComposed").textContent = mail.text;
+    document.getElementById("ffaOpenMail").href = mail.href;
+    form.hidden = true; sent.hidden = false;
+    window.location.href = mail.href;
+  });
+  document.getElementById("ffaCopy").addEventListener("click", function(){
+    var text = document.getElementById("ffaComposed").textContent;
+    var btn = document.getElementById("ffaCopy");
+    function done(){ btn.textContent = "Copied"; setTimeout(function(){ btn.textContent = "Copy message"; }, 2000); }
+    function fallback(){
+      var ta = document.createElement("textarea");
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); done(); } catch(err) {}
+      document.body.removeChild(ta);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done, fallback); }
+    else { fallback(); }
+  });
+  document.getElementById("ffaAgain").addEventListener("click", function(){
+    form.reset(); form.hidden = false; sent.hidden = true; messageInput.focus();
+  });
+})();
+</script>
 </body>
 </html>
