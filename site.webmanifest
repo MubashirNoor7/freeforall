@@ -1,15 +1,15 @@
 {
-  "name": "FreeForAll \u2014 Free Offers for Everyone, Worldwide",
+  "name": "FreeForAll — Free Offers for Everyone, Worldwide",
   "short_name": "FreeForAll",
-  "description": "59 free offers, free trials and discounts from official sites \u2014 for everyone, worldwide.",
+  "description": "51 free offers, free trials and discounts from official sites — for everyone, worldwide.",
   "icons": [
     {
-      "src": "/assets/favicon-192.png",
+      "src": "favicon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/assets/favicon-512.png",
+      "src": "favicon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
