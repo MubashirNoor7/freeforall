@@ -11,6 +11,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="light dark" />
+<script>(function(){try{var th=localStorage.getItem("freeforall-theme");if(th==="dark"||th==="light"){document.documentElement.setAttribute("data-theme",th);}}catch(e){}})();</script>
 <title>free video editing software no watermark (2026) — FreeForAll</title>
 <meta name="description" content="Free video editing software no watermark: CapCut edits on phone &amp; PC and exports your own clips without a watermark, plus Canva free for quick edits." />
 <meta name="robots" content="index, follow" />
@@ -246,6 +247,29 @@
   .all-list li{margin-bottom:7px;break-inside:avoid}
   details.info summary{cursor:pointer;font-weight:900;font-size:19px}
   @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+  /* Theme toggle: manual data-theme overrides, same palette as :root */
+  [data-theme="light"]{ --bg:#FAF9F5; --card:#FFFFFF; --ink:#1D2521; --muted:#67716A; --line:#E9E6DB; --green:#0E7A4D; --green-dark:#0A5C3B; --green-soft:#E9F4EE; --deal:#A85B12; --deal-soft:#FAF0DC; --chip:#F2F0E8; --shadow:0 14px 34px rgba(29,37,33,.10); color-scheme:light }
+  :root[data-theme="dark"]{ --bg:#131713; --card:#1D231D; --ink:#F3F1EA; --muted:#A9B2A7; --line:#2D352C; --green:#45CC8D; --green-dark:#45CC8D; --green-soft:#203227; --deal:#F2BC6B; --deal-soft:#38301C; --chip:#262C25; --shadow:0 14px 34px rgba(0,0,0,.4); color-scheme:dark }
+  .theme-btn{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1.5px solid var(--line);color:var(--ink);padding:7px 13px;border-radius:999px;font-weight:800;cursor:pointer;font-size:13.5px;flex:none}
+  .theme-btn:hover{border-color:var(--green);color:var(--green)}
+  .theme-btn svg{width:16px;height:16px;flex:none}
+  @media(max-width:640px){.theme-btn{padding:6px 10px;font-size:12.5px}}
+  @media(max-width:420px){.theme-btn .theme-label{display:none}.theme-btn{padding:6px 8px}}
+  /* Footer network strip */
+  .network{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+  .network h4{margin:0 0 12px}
+  .network-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:520px){.network-grid{grid-template-columns:1fr}}
+  .net-card{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none}
+  .net-card:hover{border-color:var(--green)}
+  .net-tile{width:44px;height:44px;border-radius:12px;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font-weight:900;font-size:20px;flex:none}
+  .net-text b{color:var(--ink);font-size:15.5px;display:block;line-height:1.25}
+  .net-text span{color:var(--muted);font-size:13px;font-weight:700}
+  .network-line{margin:12px 0 0;font-size:13px;font-weight:700}
+  .foot-brand .operator{font-weight:700;color:var(--ink)}
+  .foot-brand .correction{font-weight:600}
+
 </style>
 <style>
   .card-badge{display:inline-block;background:#FFF3E0;color:#8A4B00;border:1px solid #F5D9A8;font-size:12px;font-weight:800;border-radius:999px;padding:2px 9px;margin-left:6px;vertical-align:middle;white-space:nowrap}
@@ -259,6 +283,36 @@
   .hero h1{font-size:34px;line-height:1.15;margin:6px 0 0;font-weight:900;letter-spacing:-.02em}
   @media(max-width:600px){.hero h1{font-size:28px}}
 
+/* FreeForAll feedback: floating button + form. Sends by email, nothing is stored. */
+.ffa-fab{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--green);color:#fff;border:none;border-radius:999px;padding:12px 20px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:var(--shadow)}
+.ffa-fab:hover{background:var(--green-dark)}
+.ffa-backdrop{position:fixed;inset:0;background:rgba(10,14,10,.55);backdrop-filter:blur(4px);display:none;place-items:end center;z-index:70;padding:16px}
+@media(min-width:700px){.ffa-backdrop{place-items:center}}
+.ffa-backdrop.open{display:grid}
+.ffa-modal{background:var(--card);color:var(--ink);width:min(560px,100%);border-radius:22px;padding:24px;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
+.ffa-modal h3{margin:0 0 4px;font-size:21px;line-height:1.2;font-weight:900}
+.ffa-modal .ffa-sub{margin:0 0 16px;color:var(--muted);font-size:14.5px;font-weight:600}
+.ffa-modal-head{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.ffa-close-x{border:1.5px solid var(--line);background:var(--card);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;flex:none}
+.ffa-kinds{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.ffa-kind input{position:absolute;opacity:0;width:1px;height:1px}
+.ffa-kind span{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;font-weight:800;font-size:13.5px;cursor:pointer}
+.ffa-kind input:checked + span{background:var(--green);border-color:var(--green);color:#fff}
+.ffa-kind input:focus-visible + span{outline:2px solid var(--green);outline-offset:2px}
+.ffa-field{margin:0 0 12px}
+.ffa-field label{display:block;font-weight:800;font-size:13.5px;margin:0 0 5px}
+.ffa-field input,.ffa-field textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--card);color:var(--ink);font-size:15px;box-sizing:border-box}
+.ffa-field textarea{min-height:110px;resize:vertical}
+.ffa-field input:focus,.ffa-field textarea:focus{outline:2px solid var(--green);outline-offset:1px;border-color:var(--green)}
+.ffa-error{display:none;color:#B3261E;font-weight:700;font-size:13.5px;margin:0 0 10px}
+.ffa-error.show{display:block}
+.ffa-send{width:100%;border:none;background:var(--green);color:#fff;border-radius:999px;padding:12px;font-weight:800;font-size:15.5px;cursor:pointer}
+.ffa-send:hover{background:var(--green-dark)}
+.ffa-composed{white-space:pre-wrap;word-break:break-word;background:var(--chip);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:14px;margin:0 0 12px}
+.ffa-copy{width:100%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:11px;font-weight:800;font-size:14.5px;cursor:pointer;margin:0 0 8px}
+.ffa-open-mail{display:block;text-align:center;font-weight:800;color:var(--green);padding:8px}
+.ffa-again{display:block;text-align:center;font-weight:700;color:var(--muted);padding:8px;cursor:pointer;background:none;border:none;width:100%;font-size:14px}
+.ffa-tell-us{background:none;border:none;padding:8px 0 0;color:var(--green);font-weight:800;font-size:14px;cursor:pointer;text-decoration:underline}
 </style>
 <script type="application/ld+json">
 {
@@ -357,38 +411,6 @@
   ]
 }
 </script>
-<style>
-/* FreeForAll feedback: floating button + form. Sends by email, nothing is stored. */
-.ffa-fab{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--green);color:#fff;border:none;border-radius:999px;padding:12px 20px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:var(--shadow)}
-.ffa-fab:hover{background:var(--green-dark)}
-.ffa-backdrop{position:fixed;inset:0;background:rgba(10,14,10,.55);backdrop-filter:blur(4px);display:none;place-items:end center;z-index:70;padding:16px}
-@media(min-width:700px){.ffa-backdrop{place-items:center}}
-.ffa-backdrop.open{display:grid}
-.ffa-modal{background:var(--card);color:var(--ink);width:min(560px,100%);border-radius:22px;padding:24px;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
-.ffa-modal h3{margin:0 0 4px;font-size:21px;line-height:1.2;font-weight:900}
-.ffa-modal .ffa-sub{margin:0 0 16px;color:var(--muted);font-size:14.5px;font-weight:600}
-.ffa-modal-head{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
-.ffa-close-x{border:1.5px solid var(--line);background:var(--card);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;flex:none}
-.ffa-kinds{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
-.ffa-kind input{position:absolute;opacity:0;width:1px;height:1px}
-.ffa-kind span{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;font-weight:800;font-size:13.5px;cursor:pointer}
-.ffa-kind input:checked + span{background:var(--green);border-color:var(--green);color:#fff}
-.ffa-kind input:focus-visible + span{outline:2px solid var(--green);outline-offset:2px}
-.ffa-field{margin:0 0 12px}
-.ffa-field label{display:block;font-weight:800;font-size:13.5px;margin:0 0 5px}
-.ffa-field input,.ffa-field textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--card);color:var(--ink);font-size:15px;box-sizing:border-box}
-.ffa-field textarea{min-height:110px;resize:vertical}
-.ffa-field input:focus,.ffa-field textarea:focus{outline:2px solid var(--green);outline-offset:1px;border-color:var(--green)}
-.ffa-error{display:none;color:#B3261E;font-weight:700;font-size:13.5px;margin:0 0 10px}
-.ffa-error.show{display:block}
-.ffa-send{width:100%;border:none;background:var(--green);color:#fff;border-radius:999px;padding:12px;font-weight:800;font-size:15.5px;cursor:pointer}
-.ffa-send:hover{background:var(--green-dark)}
-.ffa-composed{white-space:pre-wrap;word-break:break-word;background:var(--chip);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:14px;margin:0 0 12px}
-.ffa-copy{width:100%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:11px;font-weight:800;font-size:14.5px;cursor:pointer;margin:0 0 8px}
-.ffa-open-mail{display:block;text-align:center;font-weight:800;color:var(--green);padding:8px}
-.ffa-again{display:block;text-align:center;font-weight:700;color:var(--muted);padding:8px;cursor:pointer;background:none;border:none;width:100%;font-size:14px}
-.ffa-tell-us{background:none;border:none;padding:8px 0 0;color:var(--green);font-weight:800;font-size:14px;cursor:pointer;text-decoration:underline}
-</style>
 </head>
 <body>
 <header class="site-header">
@@ -397,13 +419,16 @@
     <nav class="main-nav" aria-label="Main">
       <a href="https://freeforall-offers.vercel.app/">Home</a><a href="https://freeforall-offers.vercel.app/free-ai-tools-without-credit-card/">Free AI Tools</a><a href="https://freeforall-offers.vercel.app/free-video-editing-software-no-watermark/">Video Editing</a><a href="https://freeforall-offers.vercel.app/free-ai-image-generator-no-sign-up/">AI Image Generator</a>
     </nav>
+    <div class="header-actions">
+      <button class="theme-btn" id="themeToggle" aria-pressed="false" aria-label="Colour theme: System (follows your device). Activate to change theme."><svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" stroke="none"/></svg><span class="theme-label" id="themeLabel">System</span></button>
+    </div>
   </div>
 </header>
 
 <main class="wrap">
   <div class="hero" id="top">
     <div class="hero-meta">
-      <span class="updated"><i></i> Checked 10 Nov 2026</span>
+      <span class="updated"><i></i> Checked 24 Nov 2026</span>
     </div>
     <h1>free video editing software no watermark</h1>
     <p class="lead">Looking for <strong>free video editing software no watermark</strong>? On FreeForAll there is one dedicated free video editor: CapCut. A video you edit yourself from your own clips in CapCut&rsquo;s free editor exports without a watermark &mdash; that is what this page explains, including the two things that can add one, so you can avoid them before you hit export. Canva&rsquo;s free plan also includes a simple video editor for quick edits, and it is listed second below as a quick-edit option for short social clips and titles.</p>
@@ -443,7 +468,7 @@
     <h3>Can I edit videos in Canva for free?</h3>
     <p>Yes. Canva&rsquo;s free plan includes a simple video editor for quick edits &mdash; trimming clips, adding text and making social posts. For longer or more detailed edits, CapCut is the better free pick on this page.</p>
   </section>
-  <p class="checkline"><span>Checked 10 Nov 2026</span><span>All links go to the official site</span><span>Free means a real free plan today</span></p>
+  <p class="checkline"><span>Checked 24 Nov 2026</span><span>All links go to the official site</span><span>Free means a real free plan today</span></p>
 </main>
 
 <footer>
@@ -452,15 +477,17 @@
       <div class="foot-brand">
         <a class="brand" href="https://freeforall-offers.vercel.app/" aria-label="FreeForAll — home"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path fill-rule="evenodd" fill="#0E7A4D" d="M20 8 H50 A6 6 0 0 1 56 14 V50 A6 6 0 0 1 50 56 H20 L8 32 Z M23.2 32 a4.2 4.2 0 1 1 -8.4 0 a4.2 4.2 0 1 1 8.4 0"/><path d="M28 33 L35 40 L49 26" fill="none" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="wordmark">FreeForAll</span></a>
         <p>Free offers for everyone, worldwide &mdash; not just students. Every offer on this page links to the brand&rsquo;s own official site.</p>
-        <p class="trust-line">All offers are from official sites &mdash; checked 10 Nov 2026.</p>
+        <p class="operator">FreeForAll is run by Mubashir Noor (MN Creative).</p>
+        <p class="trust-line">All offers are from official sites &mdash; checked 24 Nov 2026.</p>
+        <p class="correction">Found an offer that is wrong or expired? <a href="mailto:sammykhanmalng@gmail.com?subject=Wrong%20offer%20on%20FreeForAll">Tell us and we will fix it.</a></p>
       </div>
       <nav aria-label="Explore">
         <h4>Explore</h4>
         <ul class="foot-links">
-          <li><a href="https://freeforall-offers.vercel.app/">All 63 offers</a></li>
-          <li><a href="https://freeforall-offers.vercel.app/free-ai-tools-without-credit-card/">Free AI tools</a></li>
-          <li><a href="https://freeforall-offers.vercel.app/free-video-editing-software-no-watermark/">Free video editor</a></li>
-          <li><a href="https://freeforall-offers.vercel.app/free-ai-image-generator-no-sign-up/">Free AI image generator</a></li>
+          <li><a href="https://freeforall-offers.vercel.app/">All 51 offers</a></li>
+          <li><a href="https://freeforall-offers.vercel.app/how-we-check/">How every offer is checked</a></li>
+          <li><a href="https://freeforall-offers.vercel.app/#faq">FAQ</a></li>
+          <li><a href="https://freeforall-offers.vercel.app/sitemap.xml">Sitemap</a></li>
         </ul>
       </nav>
       <nav aria-label="More free tools">
@@ -472,12 +499,15 @@
           <li><a href="https://freeforall-offers.vercel.app/free-alternatives-to-canva/">Free alternatives to Canva</a></li>
         </ul>
       </nav>
-      <nav aria-label="Trust and about">
-        <h4>Trust &amp; about</h4>
+      <nav aria-label="Trust">
+        <h4>Trust</h4>
         <ul class="foot-links">
           <li><a href="#" class="ffa-feedback-link">Give feedback</a></li>
-          <li><a href="https://freeforall-offers.vercel.app/">How every offer is checked</a></li>
-          <li><a href="https://freeforall-offers.vercel.app/">What is a free stuff website?</a></li>
+<li><a href="https://freeforall-offers.vercel.app/how-we-check/">How every offer is checked</a></li>
+          <li><a href="mailto:sammykhanmalng@gmail.com?subject=Wrong%20offer%20on%20FreeForAll">Report a wrong offer</a></li>
+          <li><a href="https://freeforall-offers.vercel.app/how-we-check/#how-we-earn">How we earn</a></li>
+          <li><a href="https://freeforall-offers.vercel.app/how-we-check/#privacy">Privacy</a></li>
+          <li><a href="https://freeforall-offers.vercel.app/how-we-check/#terms">Terms</a></li>
         </ul>
       </nav>
     </div>
@@ -488,12 +518,61 @@
         <li><a href="https://techdealsgo.com/">TechDealsGo — Tech deals & discounts</a></li>
       </ul>
     </div>
+    <div class="network" aria-label="More from the maker of FreeForAll">
+      <h4>More from the maker of FreeForAll</h4>
+      <div class="network-grid">
+        <a class="net-card" href="https://kalkio.vercel.app/" target="_blank" rel="noopener"><span class="net-tile" aria-hidden="true">K</span><span class="net-text"><b>Kalkio</b><span>free calculators &amp; converters</span></span></a>
+        <a class="net-card" href="https://techdealsgo.com/" target="_blank" rel="noopener"><span class="net-tile" aria-hidden="true">T</span><span class="net-text"><b>TechDealsGo</b><span>tech deals &amp; discounts</span></span></a>
+      </div>
+      <p class="network-line">Three independent sites, one maker.</p>
+    </div>
     <div class="foot-base">
-      <span>Checked 10 Nov 2026. All trademarks and logos belong to their owners. This site only links to official offers. &ldquo;Free&rdquo; means the company offers a real free plan today &mdash; if it ever looks different on the official site, that site is the final word.</span>
+      <span>© 2026 FreeForAll. Checked 24 Nov 2026. All trademarks and logos belong to their owners. This site only links to official offers. &ldquo;Free&rdquo; means the company offers a real free plan today &mdash; if it ever looks different on the official site, that site is the final word.</span>
       <span>Availability can vary by country</span>
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var KEY = "freeforall-theme";
+  var btn = document.getElementById("themeToggle");
+  if(!btn) return;
+  var label = document.getElementById("themeLabel");
+  var icon = document.getElementById("themeIcon");
+  var SUN = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+  var MOON = '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>';
+  var HALF = '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" stroke="none"/>';
+  function stored(){ try{ var v = localStorage.getItem(KEY); return (v==="dark"||v==="light") ? v : null; }catch(e){ return null; } }
+  function mode(){ return stored() || "system"; }
+  function effective(m){ if(m!=="system") return m; return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+  function apply(m){
+    if(m==="system"){ document.documentElement.removeAttribute("data-theme"); }
+    else { document.documentElement.setAttribute("data-theme", m); }
+    var eff = effective(m);
+    label.textContent = m==="dark" ? "Dark mode" : (m==="light" ? "Light mode" : "System");
+    icon.innerHTML = m==="dark" ? MOON : (m==="light" ? SUN : HALF);
+    btn.setAttribute("aria-pressed", m==="dark" ? "true" : "false");
+    btn.setAttribute("aria-label", "Colour theme: " + (m==="system" ? "System (currently " + eff + ", follows your device)" : (m==="dark" ? "Dark mode" : "Light mode")) + ". Activate to change theme.");
+  }
+  btn.addEventListener("click", function(){
+    var cur = mode();
+    var next = cur==="system" ? "dark" : (cur==="dark" ? "light" : "system");
+    try{
+      if(next==="system"){ localStorage.removeItem(KEY); }
+      else { localStorage.setItem(KEY, next); }
+    }catch(e){}
+    apply(next);
+  });
+  if(window.matchMedia){
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    var onChange = function(){ if(mode()==="system") apply("system"); };
+    if(mq.addEventListener) mq.addEventListener("change", onChange);
+    else if(mq.addListener) mq.addListener(onChange);
+  }
+  apply(mode());
+})();
+</script>
 <button type="button" class="ffa-fab" id="ffaFab" aria-label="Give feedback">Feedback</button>
 <div class="ffa-backdrop" id="ffaBackdrop" role="dialog" aria-modal="true" aria-labelledby="ffaTitle">
   <div class="ffa-modal">
